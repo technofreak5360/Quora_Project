@@ -1,6 +1,12 @@
 package com.upgrad.quora.api.controller;
 
 
+import com.upgrad.quora.api.model.SigninResponse;
+import com.upgrad.quora.api.model.SignoutResponse;
+import com.upgrad.quora.api.model.SignupUserRequest;
+import com.upgrad.quora.api.model.SignupUserResponse;
+import com.upgrad.quora.service.entity.UserAuthEntity;
+import com.upgrad.quora.service.entity.UserEntity;
 import com.upgrad.quora.service.exception.AuthenticationFailedException;
 import com.upgrad.quora.service.exception.SignOutRestrictedException;
 import com.upgrad.quora.service.exception.SignUpRestrictedException;
@@ -53,6 +59,8 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "user/signin", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+
+
     public ResponseEntity<SigninResponse> signin(@RequestHeader final String authorization) throws AuthenticationFailedException {
         //Basic dXNlcm5hbWU6cGFzc3dvcmQ=
         //above is a sample encoded text where the username is "username" and password is "password" seperated by a ":"
