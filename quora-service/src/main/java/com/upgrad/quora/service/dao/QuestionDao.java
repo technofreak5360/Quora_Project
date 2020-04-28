@@ -34,7 +34,6 @@ public class QuestionDao {
 
     /**
      * method used for getting all questions for a specific users uuid.
-     *
      */
     public List<Question> getAllQuestionsForUser(String uuId) {
         try {
