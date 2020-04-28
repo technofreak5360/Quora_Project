@@ -157,8 +157,6 @@ public class UserDao {
 
     /**
      * Method used for deleting exiting auth tokens for the user.
-     *
-     * @param uuid uuid of the user to be deleted
      */
     public void deleteExistingAuthDetailsForUser(String uuid) {
         try {
@@ -167,6 +165,18 @@ public class UserDao {
             return;
         }
     }
+ /**
+     * method used to check if the auth token is valid.
+     
+     */
+    public UserAuthEntity checkAuthToken(final String authorizationToken) {
+        try {
 
+            return entityManager.createNamedQuery(CHECK_AUTH_TOKEN, UserAuthEntity.class).setParameter("accessToken", authorizationToken)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
 
 }
